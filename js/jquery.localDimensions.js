@@ -34,36 +34,8 @@
 					});
 				},
 
-				appendContainer = (function() {
-					$this.append('<div id="dimensions">');
-					$dimensions = $('#dimensions'),
-					setPosition();
-				})(),
-
-				//Display the dimensions
-				displayWindowSize = function() {
-					windowWidth = document.documentElement.clientWidth,
-					windowHeight = document.documentElement.clientHeight,
-					$dimensions.html(windowWidth + ' x ' + windowHeight);
-				},
-
-				showDimensions = function() {
-					window.onload = displayWindowSize,
-					window.onresize = displayWindowSize;
-				},
-
-				// Make sure user passed a dev url.
-				// Dimensions won't show if this isn't set
-				checkDevUrl = (function() {
-					if (!devUrl) {
-						$dimensions.html('<p style="margin-bottom: 0;"><strong>Dimensions needs your Local Dev URL!</strong><br>Your current url is: <strong>' + window.location + '</strong><br>If that\'s your local dev url, set up dimesions like this:<br><code>$("body").dimensions({devUrl: "' + window.location + '"});</code></p>');
-					} else {
-						showDimensions();
-					}
-				})(),
-
 				//Move the dimensions
-				moveDimensions = function() {
+				setupMoveDimensions = function() {
 					$dimensions.on('click', function() {
 						var right = $dimensions.css('right'),
 							elementWidth = $dimensions.outerWidth();
@@ -80,7 +52,36 @@
 							});
 						}
 					});
-				};
+				},
+
+				//Display the dimensions
+				displayWindowSize = function() {
+					windowWidth = document.documentElement.clientWidth,
+					windowHeight = document.documentElement.clientHeight,
+					$dimensions.html(windowWidth + ' x ' + windowHeight);
+				},
+
+				showDimensions = function() {
+					window.onload = displayWindowSize,
+					window.onresize = displayWindowSize;
+				},
+
+				appendContainer = (function() {
+					$this.append('<div id="dimensions">');
+					$dimensions = $('#dimensions'),
+					setPosition();
+				})(),
+
+				// Make sure user passed a dev url.
+				// Dimensions won't show if this isn't set
+				checkDevUrl = (function() {
+					if (!devUrl) {
+						$dimensions.html('<p style="margin-bottom: 0;"><strong>Dimensions needs your Local Dev URL!</strong><br>Your current url is: <strong>' + window.location + '</strong><br>If that\'s your local dev url, set up dimesions like this:<br><code>$("body").dimensions({devUrl: "' + window.location + '"});</code></p>');
+					} else {
+						showDimensions();
+						setupMoveDimensions();
+					}
+				})();
 		}); // return
 	};
 

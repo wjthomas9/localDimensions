@@ -9,3 +9,6 @@ Local Dimensions takes 1 option, which is your local development url. For exampl
 Simply call the plugin to have it display your local url:
 
 ```$('body').localDimensions({devUrl: "your_local_server_url"});```
+
+
+*HINT:* Click the dimensions to move them out of the way.
