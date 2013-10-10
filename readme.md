@@ -19,4 +19,4 @@ $('body').localDimensions({devUrl: "http://10.0.0.4:7774/"});
 ```
 
 
-*HINT:* Click the dimensions to move them out of the way.
+*HINT:* Click the dimensions to move them to the other side of the window in case you need better visibility of what's beneath them.
