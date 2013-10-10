@@ -8,11 +8,15 @@ Local Dimensions takes 1 option, which is your local development url. For exampl
 
 Simply call the plugin to have it display your local url:
 
-```$('body').localDimensions();```
+```
+$('body').localDimensions();
+```
 
 Once you know your exact dev url output, you can call the plugin with it. For example here's what mine was today:
 
-```$('body').localDimensions({devUrl: "http://10.0.0.4:7774/"});```
+```
+$('body').localDimensions({devUrl: "http://10.0.0.4:7774/"});
+```
 
 
 *HINT:* Click the dimensions to move them out of the way.
