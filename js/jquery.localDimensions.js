@@ -76,7 +76,8 @@
 				// Make sure user passed a dev url.
 				// Dimensions won't show if this isn't set
 				checkDevUrl = (function() {
-					if (!devUrl || devUrl !== currentUrl) {
+					if (devUrl !== currentUrl) {
+						appendContainer();
 						$dimensions.html('<p style="margin-bottom: 0;"><strong>You forgot or mistyped your Local Dev URL!</strong><br>Your current url is: <strong>' + currentUrl + '</strong><br>If that\'s your local dev url, set up dimesions like this:<br><code>$("body").dimensions({devUrl: "' + currentUrl + '"});</code></p>');
 					} else {
 						appendContainer();
