@@ -16,6 +16,7 @@
 				windowWidth,
 				windowHeight,
 				devUrl = settings.devUrl,
+				currentUrl = String(window.location);
 
 				//Setup position
 				setPosition = function() {
@@ -66,18 +67,19 @@
 					window.onresize = displayWindowSize;
 				},
 
-				appendContainer = (function() {
+				appendContainer = function() {
 					$this.append('<div id="dimensions">');
 					$dimensions = $('#dimensions'),
 					setPosition();
-				})(),
+				},
 
 				// Make sure user passed a dev url.
 				// Dimensions won't show if this isn't set
 				checkDevUrl = (function() {
-					if (!devUrl) {
-						$dimensions.html('<p style="margin-bottom: 0;"><strong>Dimensions needs your Local Dev URL!</strong><br>Your current url is: <strong>' + window.location + '</strong><br>If that\'s your local dev url, set up dimesions like this:<br><code>$("body").dimensions({devUrl: "' + window.location + '"});</code></p>');
+					if (!devUrl || devUrl !== currentUrl) {
+						$dimensions.html('<p style="margin-bottom: 0;"><strong>You forgot or mistyped your Local Dev URL!</strong><br>Your current url is: <strong>' + currentUrl + '</strong><br>If that\'s your local dev url, set up dimesions like this:<br><code>$("body").dimensions({devUrl: "' + currentUrl + '"});</code></p>');
 					} else {
+						appendContainer();
 						showDimensions();
 						setupMoveDimensions();
 					}
